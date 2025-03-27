@@ -1,0 +1,12 @@
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\bin\Debug\net8.0\Crud.Domain.deps.json
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\bin\Debug\net8.0\Crud.Domain.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\bin\Debug\net8.0\Crud.Domain.pdb
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.GeneratedMSBuildEditorConfig.editorconfig
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.AssemblyInfoInputs.cache
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.AssemblyInfo.cs
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.csproj.CoreCompileInputs.cache
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.sourcelink.json
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\refint\Crud.Domain.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\Crud.Domain.pdb
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Domain\obj\Debug\net8.0\ref\Crud.Domain.dll

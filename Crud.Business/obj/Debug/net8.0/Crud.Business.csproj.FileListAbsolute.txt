@@ -1,0 +1,16 @@
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\bin\Debug\net8.0\Crud.Business.deps.json
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\bin\Debug\net8.0\Crud.Business.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\bin\Debug\net8.0\Crud.Business.pdb
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\bin\Debug\net8.0\Crud.Domain.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\bin\Debug\net8.0\Crud.Domain.pdb
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.csproj.AssemblyReference.cache
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.GeneratedMSBuildEditorConfig.editorconfig
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.AssemblyInfoInputs.cache
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.AssemblyInfo.cs
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.csproj.CoreCompileInputs.cache
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.sourcelink.json
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Bus.F6CE9DCF.Up2Date
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\refint\Crud.Business.dll
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\Crud.Business.pdb
+P:\Projetos e Estudos\CRUD_SPASSU\Crud.Business\obj\Debug\net8.0\ref\Crud.Business.dll

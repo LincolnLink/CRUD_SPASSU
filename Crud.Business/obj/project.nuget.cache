@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "H+Elr+kWlWw=",
+  "success": true,
+  "projectFilePath": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Business\\Crud.Business.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lincoln\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512"
+  ],
+  "logs": []
+}
