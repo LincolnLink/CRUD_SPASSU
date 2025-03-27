@@ -21,6 +21,9 @@ namespace Crud.Api
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.ResolveDependencies();
 
+            Console.WriteLine($"Connection String------------: {builder.Configuration.GetConnectionString("DefaultConnection")}");
+            Console.WriteLine($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}.json");
+
             // Adiciona o DbContext e define o banco de dados (exemplo: SQL Server)
             builder.Services.AddDbContext<MeuDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
