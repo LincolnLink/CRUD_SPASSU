@@ -1,0 +1,32 @@
+<div class="container">
+    
+    <br>
+    
+    <h4 style="margin: 1em 0em 2em 0em;">{{ aluno.id ? 'Editar Aluno' : 'Cadastrar Novo Aluno' }}</h4>
+  
+    <form ng-submit="salvarAluno()">
+      <div class="input-field">
+        <input id="nome" type="text" ng-model="aluno.nome" required>
+        <label for="nome">Nome</label>
+      </div>
+  
+      <div class="input-field">
+        <input id="idade" type="number" ng-model="aluno.idade" required>
+        <label for="idade">Idade</label>
+      </div>
+  
+      <button class="btn waves-effect waves-light" type="submit">
+        {{ aluno.id ? 'Salvar Alterações' : 'Cadastrar' }}
+        <i class="material-icons right">send</i>
+      </button>
+      <a href="/" class="btn" style="float: right;">Voltar para a lista</a>
+    </form>
+  
+    <div ng-if="erros.length > 0" class="alert alert-danger">
+      <ul>
+          <li style="text-decoration: solid; color: red;" ng-repeat="erro in erros">{{ erro }}</li>
+      </ul>
+    </div>
+    
+  </div>
+  

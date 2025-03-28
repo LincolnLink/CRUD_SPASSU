@@ -1,0 +1,38 @@
+<div class="container">
+    <div ng-if="erros.length > 0" class="alert alert-danger">
+      <ul>
+          <li ng-repeat="erro in erros">{{ erro }}</li>
+      </ul>
+    </div>
+    <h4 style="margin: 1em 0em 2em 0em;">Lista de Alunos</h4>
+    <div>Quantidade de Alunos cadastrados: {{ quantidade }}</div>
+  
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="aluno in alunos">
+          <td>{{ aluno.nome }}</td>
+          <td>{{ aluno.idade }}</td>
+          <td>
+            <a href="/cadastro-edicao/{{ aluno.id }}" class="btn-small waves-effect waves-light">Editar</a>
+            <button class="btn-small red waves-effect waves-light" ng-click="excluirAluno(aluno.id)">
+              Excluir
+              <i class="material-icons right">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <a href="/cadastro-edicao" 
+    class="btn waves-effect waves-light"
+    style="margin-top: 2em;"
+    >Adicionar Novo Aluno</a>
+  </div>
+  
