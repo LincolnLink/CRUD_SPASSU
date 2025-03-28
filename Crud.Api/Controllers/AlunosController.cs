@@ -3,6 +3,7 @@ using Crud.Domain.Interfaces;
 using Crud.Domain.Models;
 using Crud.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Crud.Api.Controllers
 {
@@ -22,13 +23,17 @@ namespace Crud.Api.Controllers
             ) : base(notificador)
         {
             _mapper = mapper;
+            _alunoRepository = alunoRepository;
+            _alunosService = alunosServico;
         }
 
         [HttpGet("ObterTodos")]
         public async Task<ActionResult<IEnumerable<AlunosViewModel>>> ObterTodos()
         {
-            var alunos = _mapper.Map<IEnumerable<AlunosViewModel>>(await _alunoRepository.ObterTodos());
-            return Ok(alunos);
+            var alunos = await _alunoRepository.ObterTodos();
+
+            var alunosViewModel = _mapper.Map<IEnumerable<AlunosViewModel>>(alunos);
+            return Ok(alunosViewModel);
         }
 
 
@@ -72,14 +77,34 @@ namespace Crud.Api.Controllers
 
             var alunosAtualizacao = await ObterAluno(id);
 
-            if (!ModelState.IsValid) return CustomResponse(ModelState);
-                        
-            alunosAtualizacao.Nome = alunosViewModel.Nome;
-            alunosAtualizacao.Idade = alunosViewModel.Idade;
-            
-            await _alunosService.Atualizar(_mapper.Map<Alunos>(alunosAtualizacao));
+            if (alunosAtualizacao == null)
+            {
+                NotificarErro("Aluno não encontrado.");
+                return CustomResponse();
+            }
 
-            return CustomResponse(alunosViewModel);
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+
+            try
+            {
+                // Atualiza os campos
+                alunosAtualizacao.Nome = alunosViewModel.Nome;
+                alunosAtualizacao.Idade = alunosViewModel.Idade;
+
+                // Chama o serviço de atualização
+                await _alunosService.Atualizar(_mapper.Map<Alunos>(alunosAtualizacao));
+
+                return CustomResponse(alunosViewModel);
+            }
+            catch (Exception ex)
+            {
+                // Log do erro (caso tenha um logger)
+                Console.WriteLine($"Erro ao atualizar aluno: {ex.Message}");
+
+                NotificarErro("Ocorreu um erro ao atualizar o aluno.");
+                return CustomResponse();
+            }
         }
 
                 

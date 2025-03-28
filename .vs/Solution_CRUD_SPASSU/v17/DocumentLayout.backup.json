@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "P:\\Projetos e Estudos\\CRUD_SPASSU\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2AD9C0E-5708-4792-9220-ABB11A684211}|Crud.Data\\Crud.Data.csproj|p:\\projetos e estudos\\crud_spassu\\crud.data\\context\\meudbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2AD9C0E-5708-4792-9220-ABB11A684211}|Crud.Data\\Crud.Data.csproj|solutionrelative:crud.data\\context\\meudbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|p:\\projetos e estudos\\crud_spassu\\crud.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|solutionrelative:crud.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2AD9C0E-5708-4792-9220-ABB11A684211}|Crud.Data\\Crud.Data.csproj|p:\\projetos e estudos\\crud_spassu\\crud.data\\context\\meudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2AD9C0E-5708-4792-9220-ABB11A684211}|Crud.Data\\Crud.Data.csproj|solutionrelative:crud.data\\context\\meudbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|p:\\projetos e estudos\\crud_spassu\\crud.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|solutionrelative:crud.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,63 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MeuDbContextFactory.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Data\\Context\\MeuDbContextFactory.cs",
-              "RelativeDocumentMoniker": "Crud.Data\\Context\\MeuDbContextFactory.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Data\\Context\\MeuDbContextFactory.cs",
-              "RelativeToolTip": "Crud.Data\\Context\\MeuDbContextFactory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T21:12:18.015Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MeuDbContext.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Data\\Context\\MeuDbContext.cs",
-              "RelativeDocumentMoniker": "Crud.Data\\Context\\MeuDbContext.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Data\\Context\\MeuDbContext.cs",
-              "RelativeToolTip": "Crud.Data\\Context\\MeuDbContext.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T21:12:08.022Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Program.cs",
-              "RelativeDocumentMoniker": "Crud.Api\\Program.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Program.cs",
-              "RelativeToolTip": "Crud.Api\\Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAswBgAAAByAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T21:11:38.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Crud.Api\\Properties\\launchSettings.json",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Crud.Api\\Properties\\launchSettings.json",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-27T21:11:31.549Z",
-              "EditorCaption": ""
             }
           ]
         }
