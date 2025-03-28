@@ -1,0 +1,19 @@
+# Ignore a pasta bin e obj de projetos .NET
+bin/
+obj/
+
+# Ignore arquivos de configuração do Visual Studio
+.vs/
+.vscode/
+
+# Ignore arquivos de build do Node.js
+node_modules/
+
+# Ignore arquivos de log
+*.log
+
+# Ignore arquivos de configuração do macOS
+.DS_Store
+
+# Ignore arquivos temporários de sistema
+Thumbs.db

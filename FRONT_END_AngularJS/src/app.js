@@ -40,7 +40,8 @@ app.controller('ListaAlunosController', ['$scope', '$http', function($scope, $ht
 
   // Excluir um aluno
   $scope.excluirAluno = function(id) {
-    $http.delete(apiUrl + '/' + id)
+    if (confirm("Tem certeza que deseja excluir este aluno?")) {
+      $http.delete(apiUrl + '/' + id)
       .then(function(response) {
         $scope.alunos = $scope.alunos.filter(function(aluno) {
           return aluno.id !== id;
@@ -51,6 +52,7 @@ app.controller('ListaAlunosController', ['$scope', '$http', function($scope, $ht
         }
         console.error('Erro ao excluir aluno:', error);
       });
+    }    
   };
 }]);
 
