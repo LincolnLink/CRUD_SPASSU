@@ -1,0 +1,102 @@
+/* Estiliza o container principal para centralizar */
+.container-prime {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-color: #f3f4f6;
+    padding: 20px;
+  }
+  
+  /* Aumenta o Card e define altura mínima */
+  .custom-card-prime {
+    width: 90%;
+    max-width: 1200px; /* Define um limite máximo para telas grandes */
+    /* height: auto; */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 8px;
+  }
+  
+  /* Centraliza o título e define espaçamento */
+  .title-prime {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Define tamanho fixo para a tabela e rolagem */
+  .table-container-prime {
+    width: 100%;
+    min-height: 300px;
+    /* max-height: 500px; */
+    overflow-y: auto; /* Permite rolagem se necessário */
+  }
+  
+  /* Faz a tabela ocupar todo o espaço */
+  .custom-table-prime {
+    width: 100%;
+    min-height: 300px; /* Mantém altura fixa */
+  }
+  
+  .dropdown-container-prime {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  
+
+/* Título do card e botão de criar alinhados */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-bottom: 5em;
+}
+
+.card-header h3 {
+  margin: 0;
+}
+
+/* Estiliza o botão Criar Novo */
+.p-button-success {
+  margin-left: 10px;
+}
+
+.custom-table-prime {
+  width: 100%;
+}
+
+
+/* ajuste tabela */
+
+
+.p-datatable-table thead tr{
+  background: #f9fafb;
+}
+
+.form-prime{
+  margin-bottom: 3em;
+  display: block;
+}
+
+.input-prime {
+  width: 100%;
+}
+
+/* Largura 50% para telas maiores */
+@media (min-width: 768px) {
+  .input-prime {
+    width: 50%;
+    padding: 1em;
+  }
+
+  .form-prime{
+    margin-bottom: 3em;
+    display: flex;
+  }
+}

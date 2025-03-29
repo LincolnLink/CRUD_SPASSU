@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Crud.Domain.Interfaces;
 using Crud.Domain.Models;
+using Crud.Domain.others;
 using Crud.Domain.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,20 @@ namespace Crud.Api.Controllers
             return Ok(alunosViewModel);
         }
 
+        [HttpGet("ObterTodosPaginado")]
+        public async Task<ActionResult<PagedResult<AlunosViewModel>>> ObterTodosPaginado([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        {
+            var (alunos, totalRecords) = await _alunoRepository.ObterTodosPaginado(pageNumber, pageSize);
 
+            var alunosViewModel = _mapper.Map<IEnumerable<AlunosViewModel>>(alunos);
+
+            return Ok(new
+            {
+                items = alunosViewModel, // Lista paginada de alunos
+                totalRecords // Total de alunos (para controle da paginação no frontend)
+            });
+        }
+         
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<AlunosViewModel>> ObterPorId(Guid id)
         {

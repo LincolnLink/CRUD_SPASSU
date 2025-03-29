@@ -34,12 +34,7 @@ namespace Crud.Data.Repository
 
         public virtual async Task<List<T>> ObterTodos()
         {
-
-            //if (DbSet.Any())
-            //    throw new InvalidOperationException("Não tem dados cadastrados!");
-
             return await DbSet.ToListAsync() ?? new List<T>();
-
         }
 
         public virtual async Task Adicionar(T entity)

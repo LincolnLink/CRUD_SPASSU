@@ -1,0 +1,16 @@
+/* Define o menu fixo no topo e remove margens extras */
+.custom-menubar {
+    width: 100%;
+    background-color: #007ad9; /* Cor azul do PrimeReact */
+    border-radius: 0;
+    padding: 10px;
+  }
+  
+  /* Remove qualquer espaçamento extra entre o menu e o conteúdo */
+  .content-container {
+    margin-top: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  

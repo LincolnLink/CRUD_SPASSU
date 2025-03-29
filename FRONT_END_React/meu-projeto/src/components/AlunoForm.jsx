@@ -9,15 +9,19 @@ const AlunoForm = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams(); // Pega o ID da URL (para edição)
   const navigate = useNavigate(); // Use useNavigate ao invés de useHistory
-
+  
   useEffect(() => {
-    if (id) {
+    if (id) {      
       // Se há um ID na URL, buscamos os dados do aluno para editar
       const fetchAluno = async () => {
         try {
           const aluno = await getAlunoById(id);
-          setNome(aluno.nome);
-          setIdade(aluno.idade);
+
+          if(aluno !== null){
+            setNome(aluno.nome);
+            setIdade(aluno.idade);            
+          }
+         
         } catch (err) {
           setError('Erro ao carregar os dados do aluno.');
           console.log('erro:', err)

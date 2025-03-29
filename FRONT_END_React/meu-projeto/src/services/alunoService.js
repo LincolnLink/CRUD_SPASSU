@@ -7,6 +7,13 @@ export const getAlunos = async () => {
   return response.data;
 };
 
+export const getAlunosPaginado = async (pageNumber = 1, pageSize = 10) => {
+  const response = await axios.get(`${API_URL}/ObterTodosPaginado`, {
+    params: { pageNumber, pageSize },
+  });
+  return response.data;
+};
+
 export const getAlunoById = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
