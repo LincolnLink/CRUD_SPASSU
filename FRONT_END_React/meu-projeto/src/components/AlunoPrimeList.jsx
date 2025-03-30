@@ -6,7 +6,6 @@ import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
-import { Toolbar } from 'primereact/toolbar';
 
 import { getAlunosPaginado, deleteAluno } from '../services/alunoService';
 
@@ -35,10 +34,10 @@ const AlunoPrimeList = () => {
     loadAlunos(pageNumber, lazyParams.rows);
   }, [lazyParams]);
   
-
   const loadAlunos = async (page, size) => {
     setLoading(true);
     const data = await getAlunosPaginado(page, size);
+    console.log("Dados carregados:", data);
     setAlunos(data.items);
     setTotalRecords(data.totalRecords);
     setLoading(false);

@@ -18,20 +18,17 @@ const AlunoPrimeForm = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { id } = useParams(); // Pega o ID da URL (para edição)
-  const navigate = useNavigate(); // Use useNavigate ao invés de useHistory
+  const navigate = useNavigate();
   
   useEffect(() => {
-    if (id) {      
-      // Se há um ID na URL, buscamos os dados do aluno para editar
+    if (id) {
       const fetchAluno = async () => {
         try {
           const aluno = await getAlunoById(id);
-
           if(aluno !== null){
             setNome(aluno.nome);
             setIdade(aluno.idade);            
-          }
-         
+          }         
         } catch (err) {
           setError('Erro ao carregar os dados do aluno.');
           console.log('erro:', err)
@@ -44,29 +41,28 @@ const AlunoPrimeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verifica se nome ou idade estão vazios ou nulos
-    if (!nome || !idade) {
-      setError('Nome e Idade são obrigatórios.');
-      return;
-    }
+    // if (!nome || !idade) {
+    //   setError('Nome e Idade são obrigatórios.');
+    //   return;
+    // }
 
     setLoading(true);
-
+    setError("");
+    const alunoData = {
+      nome: nome.trim(),
+      idade: idade ? Number(idade) : 0
+    };
     try {
-      if (id) {
-        // Se tiver um id, fazemos a atualização
-        await updateAluno(id, {id, nome, idade });
-      } else {
-        // Se não tiver um id, criamos um novo aluno
-        await createAluno({ nome, idade });
+      if (id) {       
+        await updateAluno(id, { id, ...alunoData });
+      } else {        
+        await createAluno(alunoData);
       }
-
       setLoading(false);
-      navigate('/');
+      navigate('/AlunoPrimeList');
     } catch (err) {
-      setLoading(false);
-      setError('Erro ao salvar os dados do aluno.');
-      console.log('erro:', err)
+      setLoading(false);      
+      setError(err.message || "Erro ao salvar os dados do aluno. Tente novamente.");
     }
   };
 
@@ -77,9 +73,6 @@ const AlunoPrimeForm = () => {
   return (
     <div className="container-prime">
       <Card className="custom-card-prime p-shadow-4">
-
-        {error && <Message severity="error" text={error} />}
-
         <div className="card-header">
           <h3>{id ? 'Editar Aluno' : 'Cadastrar Aluno'}</h3>
         </div>
@@ -93,7 +86,7 @@ const AlunoPrimeForm = () => {
                 id="nome"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
-                required
+                //required
                 className="p-inputtext-sm"
               />
             </div>
@@ -105,7 +98,7 @@ const AlunoPrimeForm = () => {
                 type="number"
                 value={idade}
                 onChange={(e) => setIdade(e.target.value)}
-                required
+                // required
                 className="p-inputtext-sm"
               />
             </div>
@@ -130,7 +123,11 @@ const AlunoPrimeForm = () => {
             />
           </div>
         </form>
-
+        <br />
+        <div className="mt3">
+          {error && <Message severity="error" text={error} />}
+        </div>
+        
       </Card>
     </div>
   );

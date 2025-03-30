@@ -41,14 +41,18 @@ const AlunoForm = () => {
     }
 
     setLoading(true);
-
+    setError("");
+    const alunoData = {
+      nome: nome.trim(),
+      idade: idade ? Number(idade) : 0
+    };
     try {
       if (id) {
         // Se tiver um id, fazemos a atualização
-        await updateAluno(id, {id, nome, idade });
+        await updateAluno(id, {id, ...alunoData});
       } else {
         // Se não tiver um id, criamos um novo aluno
-        await createAluno({ nome, idade });
+        await createAluno(alunoData);
       }
 
       setLoading(false);
@@ -92,7 +96,9 @@ const AlunoForm = () => {
           />
         </div>
 
-        {error && <div className="red-text">{error}</div>}
+        <div className="mt3">
+          {error && <div className="red-text">{error}</div>}
+        </div>       
 
         <div className="input-field">
           <button
