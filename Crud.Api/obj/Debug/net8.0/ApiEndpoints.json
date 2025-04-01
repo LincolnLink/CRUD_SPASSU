@@ -100,6 +100,129 @@
   },
   {
     "ContainingType": "Crud.Api.Controllers.AlunosController",
+    "Method": "AdicionarComFoto",
+    "RelativePath": "api/Alunos/AdicionarComFoto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Idade",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FotoUpload",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RemoveFoto",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Crud.Domain.ViewModels.AlunosViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Crud.Api.Controllers.AlunosController",
+    "Method": "AtualizarComFoto",
+    "RelativePath": "api/Alunos/AtualizarComFoto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "Id",
+        "Type": "System.Nullable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nome",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Idade",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "FotoUpload",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "FotoUrl",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RemoveFoto",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Crud.Api.Controllers.AlunosController",
+    "Method": "ObterComFotoPorId",
+    "RelativePath": "api/Alunos/ObterComFotoPorId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Crud.Domain.ViewModels.AlunosViewModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Crud.Api.Controllers.AlunosController",
     "Method": "ObterTodos",
     "RelativePath": "api/Alunos/ObterTodos",
     "HttpMethod": "GET",

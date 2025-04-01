@@ -15,7 +15,7 @@ namespace Crud.Domain.ViewModels
         [Range(1, 150, ErrorMessage = "O campo {0} deve estar entre {1} e {2}")]
         public int Idade { get; set; }
 
-        //public IFormFile? Foto { get; set; }
+        public string? FotoUrl { get; set; }
     }
 }
 

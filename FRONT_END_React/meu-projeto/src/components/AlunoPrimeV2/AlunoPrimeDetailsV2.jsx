@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getAlunoById } from '../../services/alunoService';
+import { getAlunoComFotoById } from '../../services/alunoService';
 
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
@@ -20,7 +20,7 @@ const AlunoPrimeDetailsV2 = () => {
   useEffect(() => {
     const fetchAluno = async () => {
       try {
-        const data = await getAlunoById(id);
+        const data = await getAlunoComFotoById(id);
         setAluno(data);
       } catch (err) {
         console.log("erro: ", err);

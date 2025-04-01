@@ -44,7 +44,8 @@ const AlunoForm = () => {
     setError("");
     const alunoData = {
       nome: nome.trim(),
-      idade: idade ? Number(idade) : 0
+      idade: idade ? Number(idade) : 0,
+      fotoUrl: null
     };
     try {
       if (id) {

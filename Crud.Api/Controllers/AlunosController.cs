@@ -15,6 +15,7 @@ namespace Crud.Api.Controllers
         private readonly IMapper _mapper;
         private readonly IAlunosService _alunosService;
         private readonly IAlunosRepository _alunoRepository;
+        private string filePath = "";
 
         public AlunosController(
             IAlunosRepository alunoRepository,
@@ -62,13 +63,28 @@ namespace Crud.Api.Controllers
             return Ok(alunosViewModel);
         }
 
+        [HttpGet("ObterComFotoPorId/{id:guid}")]
+        public async Task<ActionResult<AlunosViewModel>> ObterComFotoPorId(Guid id)
+        {
+            // Converte o model aluno para alunoViewModel.           
+            var alunosViewModel = await ObterAlunoComFoto(id);
+
+            if (alunosViewModel == null) return NotFound(); //404 não encontrado.
+
+            return Ok(alunosViewModel);
+        }
 
         private async Task<AlunosViewModel> ObterAluno(Guid id)
         {
             return _mapper.Map<AlunosViewModel>(await _alunoRepository.ObterPorId(id));
         }
-        
-        
+
+        private async Task<AlunosComFotoViewModel> ObterAlunoComFoto(Guid id)
+        {
+            return _mapper.Map<AlunosComFotoViewModel>(await _alunoRepository.ObterPorId(id));
+        }
+
+
         [HttpPost("Adicionar")]
         public async Task<ActionResult<AlunosViewModel>> Adicionar(AlunosViewModel alunosViewModel)
         {
@@ -98,7 +114,6 @@ namespace Crud.Api.Controllers
             }
 
             if (!ModelState.IsValid) return CustomResponse(ModelState);
-
 
             try
             {
@@ -133,5 +148,135 @@ namespace Crud.Api.Controllers
             
             return CustomResponse(alunoViewModel);
         }
+
+
+        [HttpPost("AdicionarComFoto")]
+        public async Task<ActionResult<AlunosViewModel>> AdicionarComFoto([FromForm] AlunosComFotoViewModel alunosViewModel)
+        {
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            string? filePath = null;
+
+            if (alunosViewModel.FotoUpload != null)
+            {
+                filePath = await UploadArquivoAlternativo(alunosViewModel.FotoUpload);
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    return CustomResponse(ModelState);
+                }
+                alunosViewModel.FotoUrl = filePath;
+            }
+
+            await _alunosService.Adicionar(_mapper.Map<Alunos>(alunosViewModel));
+
+            return CustomResponse(alunosViewModel);
+        }
+
+        private async Task<string> UploadArquivoAlternativo(IFormFile FotoUpload)
+        {
+            if (FotoUpload == null) return null;
+
+            var extensao = Path.GetExtension(FotoUpload.FileName).ToLower();
+            if (extensao != ".jpeg" && extensao != ".jpg")
+            {
+                NotificarErro("A foto deve ser do tipo JPEG ou JPG.");
+                return null;
+            }
+
+            if (FotoUpload.Length > 1048576) // Limite de 1MB
+            {
+                NotificarErro("A foto é muito grande. O tamanho máximo permitido é 1MB.");
+                return null;
+            }
+
+            var nomeArquivo = $"{Guid.NewGuid()}{extensao}";
+            var diretorioDestino = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pasta-fotos");
+
+            if (!Directory.Exists(diretorioDestino))
+            {
+                Directory.CreateDirectory(diretorioDestino);
+            }
+
+            var caminhoCompleto = Path.Combine(diretorioDestino, nomeArquivo);
+
+            using (var stream = new FileStream(caminhoCompleto, FileMode.Create))
+            {
+                await FotoUpload.CopyToAsync(stream);
+            }
+
+            return nomeArquivo;
+        }
+
+        [HttpPut("AtualizarComFoto/{id:guid}")]
+        public async Task<IActionResult> AtualizarComFoto(Guid id, [FromForm] AlunosComFotoViewModel alunosViewModel)
+        {
+            if (id != alunosViewModel.Id)
+            {
+                NotificarErro("Os ids informados não são iguais!");
+                return CustomResponse();
+            }
+
+            var alunosAtualizacao = await ObterAlunoComFoto(id);
+
+            if (alunosAtualizacao == null)
+            {
+                NotificarErro("Aluno não encontrado.");
+                return CustomResponse();
+            }
+
+            if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+            try
+            {
+                // Atualiza os campos básicos
+                alunosAtualizacao.Nome = alunosViewModel.Nome;
+                alunosAtualizacao.Idade = alunosViewModel.Idade;
+
+                // Verifica se uma nova foto foi enviada
+                if (alunosViewModel.FotoUpload != null)
+                {
+                    // Remove a foto antiga, se necessário
+                    if (!string.IsNullOrEmpty(alunosAtualizacao.FotoUrl))
+                    {
+                        var caminhoFotoAntiga = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pasta-fotos", alunosAtualizacao.FotoUrl);
+                        if (System.IO.File.Exists(caminhoFotoAntiga))
+                        {
+                            System.IO.File.Delete(caminhoFotoAntiga); // Exclui a foto antiga
+                        }
+                    }
+
+                    // Realiza o upload da nova foto
+                    var filePath = await UploadArquivoAlternativo(alunosViewModel.FotoUpload);
+                    if (string.IsNullOrEmpty(filePath))
+                    {
+                        NotificarErro("Falha ao fazer upload da foto.");
+                        return CustomResponse(); // Retorna uma resposta de erro
+                    }
+
+                    // Atualiza a URL da foto
+                    alunosAtualizacao.FotoUrl = filePath;
+                }
+
+                if (alunosViewModel.RemoveFoto)
+                {
+                    alunosAtualizacao.FotoUrl = null;
+                }
+                // Atualiza o aluno no banco de dados
+                await _alunosService.Atualizar(_mapper.Map<Alunos>(alunosAtualizacao));
+
+                return CustomResponse(alunosViewModel); // Retorna a resposta de sucesso
+            }
+            catch (Exception ex)
+            {
+                // Log do erro (caso tenha um logger)
+                Console.WriteLine($"Erro ao atualizar aluno: {ex.Message}");
+
+                NotificarErro("Ocorreu um erro ao atualizar o aluno.");
+                return CustomResponse(); // Retorna um erro genérico
+            }
+        }
+
+
+
     }
 }

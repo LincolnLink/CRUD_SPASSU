@@ -8,7 +8,7 @@ namespace Crud.Domain.Models
 
         public int Idade { get; set; }
 
-        //public IFormFile Foto { get; set; }
+        public string? FotoUrl { get; set; }
 
     }
 }

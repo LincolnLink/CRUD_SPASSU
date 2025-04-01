@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "P:\\Projetos e Estudos\\CRUD_SPASSU\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{01366B23-BE6C-4258-A932-B42C4757152B}|Crud.Business\\Crud.Business.csproj|p:\\projetos e estudos\\crud_spassu\\crud.business\\services\\alunosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{01366B23-BE6C-4258-A932-B42C4757152B}|Crud.Business\\Crud.Business.csproj|solutionrelative:crud.business\\services\\alunosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{01366B23-BE6C-4258-A932-B42C4757152B}|Crud.Business\\Crud.Business.csproj|p:\\projetos e estudos\\crud_spassu\\crud.business\\services\\baseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{01366B23-BE6C-4258-A932-B42C4757152B}|Crud.Business\\Crud.Business.csproj|solutionrelative:crud.business\\services\\baseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|p:\\projetos e estudos\\crud_spassu\\crud.api\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|solutionrelative:crud.api\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +23,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AlunosService.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Business\\Services\\AlunosService.cs",
-              "RelativeDocumentMoniker": "Crud.Business\\Services\\AlunosService.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Business\\Services\\AlunosService.cs",
-              "RelativeToolTip": "Crud.Business\\Services\\AlunosService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "AlunosController.cs",
+              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Controllers\\AlunosController.cs",
+              "RelativeDocumentMoniker": "Crud.Api\\Controllers\\AlunosController.cs",
+              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Controllers\\AlunosController.cs",
+              "RelativeToolTip": "Crud.Api\\Controllers\\AlunosController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswCAAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T02:23:12.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseService.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Business\\Services\\BaseService.cs",
-              "RelativeDocumentMoniker": "Crud.Business\\Services\\BaseService.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Business\\Services\\BaseService.cs",
-              "RelativeToolTip": "Crud.Business\\Services\\BaseService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T02:23:09.066Z",
+              "WhenOpened": "2025-04-01T18:33:15.303Z",
               "EditorCaption": ""
             }
           ]

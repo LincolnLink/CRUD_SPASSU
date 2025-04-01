@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Card } from 'primereact/card';
@@ -13,6 +12,9 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primeicons/primeicons.css';
 import '../../styles/AlunoPrime.css';
+
+const API_URL_FOTO = "https://localhost:7047/pasta-fotos";
+// const PLACEHOLDER = "../../assets/no-photo.jpg";
 
 const AlunoPrimeListV2 = () => {
   const [alunos, setAlunos] = useState([]);
@@ -84,6 +86,26 @@ const AlunoPrimeListV2 = () => {
     );
   };
 
+  // Template para a foto do aluno
+  // const fotoBodyTemplate = (rowData) => {
+  //   const imageUrl = rowData.fotoUrl 
+  //     ? `${API_URL_FOTO}/${rowData.fotoUrl}?${new Date().getTime()}`  // Adiciona um parâmetro único
+  //     : PLACEHOLDER;
+
+  //   return (
+  //     <img 
+  //       src={imageUrl} 
+  //       alt="Foto do aluno" 
+  //       style={{ width: 50, height: 50, borderRadius: "50%" }}
+  //       onError={(e) => {
+  //         e.target.onerror = null; 
+  //         e.target.src = PLACEHOLDER;
+  //       }} 
+  //     />
+  //   );
+  // };
+
+
   return (
 
     <div className="container-prime">
@@ -123,7 +145,9 @@ const AlunoPrimeListV2 = () => {
             className="custom-table-prime"
             responsiveLayout="scroll"
             rowHover
-          >            
+          >       
+            {/* <Column field="fotoUrl" header="Foto" body={fotoBodyTemplate} style={{ width: '100px', textAlign: 'center' }} />
+                   */}
             <Column field="nome" header="Nome" />
             <Column field="idade" header="Idade" />
 

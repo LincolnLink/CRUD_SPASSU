@@ -210,6 +210,46 @@
         }
       }
     },
+    "/api/Alunos/ObterComFotoPorId/{id}": {
+      "get": {
+        "tags": [
+          "Alunos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Alunos/Adicionar": {
       "post": {
         "tags": [
@@ -254,6 +294,178 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/Alunos/AdicionarComFoto": {
+      "post": {
+        "tags": [
+          "Alunos"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Idade",
+                  "Nome"
+                ],
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "Nome": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "Idade": {
+                    "maximum": 150,
+                    "minimum": 1,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "FotoUpload": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FotoUrl": {
+                    "type": "string"
+                  },
+                  "RemoveFoto": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Nome": {
+                  "style": "form"
+                },
+                "Idade": {
+                  "style": "form"
+                },
+                "FotoUpload": {
+                  "style": "form"
+                },
+                "FotoUrl": {
+                  "style": "form"
+                },
+                "RemoveFoto": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunosViewModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Alunos/AtualizarComFoto/{id}": {
+      "put": {
+        "tags": [
+          "Alunos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Idade",
+                  "Nome"
+                ],
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "Nome": {
+                    "maxLength": 50,
+                    "minLength": 2,
+                    "type": "string"
+                  },
+                  "Idade": {
+                    "maximum": 150,
+                    "minimum": 1,
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "FotoUpload": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "FotoUrl": {
+                    "type": "string"
+                  },
+                  "RemoveFoto": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Nome": {
+                  "style": "form"
+                },
+                "Idade": {
+                  "style": "form"
+                },
+                "FotoUpload": {
+                  "style": "form"
+                },
+                "FotoUrl": {
+                  "style": "form"
+                },
+                "RemoveFoto": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -322,6 +534,10 @@
             "minimum": 1,
             "type": "integer",
             "format": "int32"
+          },
+          "fotoUrl": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

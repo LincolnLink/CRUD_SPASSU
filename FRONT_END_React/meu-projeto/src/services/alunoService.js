@@ -27,9 +27,40 @@ export const getAlunoById = async (id) => {
   }
 };
 
+//ObterComFotoPorId
+export const getAlunoComFotoById = async (id) => {
+  try {
+    const response = await axios.get(`${API_URL}/ObterComFotoPorId/${id}`);
+    return response.data;
+  } catch (error) {
+    throw new Error('Erro ao obter aluno', error);
+  }
+};
+
 export const createAluno = async (aluno) => {
   try {
     const response = await axios.post(`${API_URL}/Adicionar`, aluno);
+
+    console.log("valor: ", response); 
+    
+    return response.data;
+       
+  } catch (error) {    
+    if (error.response) {      
+      const mensagens = error.response.data?.errors 
+        ? Object.values(error.response.data.errors).flat().join(" | ") 
+        : error.response.data?.mensagem || "Erro desconhecido no servidor.";
+
+      throw new Error(mensagens);
+    }
+    throw new Error('Erro ao salvar os dados do aluno.');
+  }
+};
+
+//AdicionarComFoto
+export const createAlunoComFoto = async (aluno) => {
+  try {
+    const response = await axios.post(`${API_URL}/AdicionarComFoto`, aluno);
 
     console.log("valor: ", response); 
     
@@ -62,6 +93,24 @@ export const updateAluno = async (id, aluno) => {
     throw new Error('Erro ao atualizar os dados do aluno.');
   }
 };
+
+export const updateAlunoComFoto = async (id, aluno) => {
+  try {
+    const response = await axios.put(`${API_URL}/AtualizarComFoto/${id}`, aluno);
+    return response.data;
+  } catch (error) {
+    if (error.response) {      
+      const mensagens = error.response.data?.errors 
+        ? Object.values(error.response.data.errors).flat().join(" | ") 
+        : error.response.data?.mensagem || "Erro desconhecido no servidor.";
+
+      throw new Error(mensagens);
+    }
+    throw new Error('Erro ao atualizar os dados do aluno.');
+  }
+};
+
+
 
 export const deleteAluno = async (id) => {
   const response = await axios.delete(`${API_URL}/${id}`);

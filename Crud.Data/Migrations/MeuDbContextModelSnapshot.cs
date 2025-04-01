@@ -28,6 +28,9 @@ namespace Crud.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("FotoUrl")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<int>("Idade")
                         .HasColumnType("int");
 

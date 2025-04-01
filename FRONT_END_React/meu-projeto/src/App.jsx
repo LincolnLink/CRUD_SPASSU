@@ -9,8 +9,12 @@ import './App.css';
 
 import AlunoList from './components/Aluno/AlunoList';
 import AlunoForm from './components/Aluno/AlunoForm';
+import AlunoDetails from './components/Aluno/AlunoDetails';
+
 import AlunoPrimeList from './components/AlunoPrime/AlunoPrimeList';
 import AlunoPrimeForm from './components/AlunoPrime/AlunoPrimeForm';
+import AlunoPrimeDetails from './components/AlunoPrime/AlunoPrimeDetails';
+
 import AlunoPrimeListV2 from './components/AlunoPrimeV2/AlunoPrimeListV2';
 import AlunoPrimeFormV2 from './components/AlunoPrimeV2/AlunoPrimeFormV2';
 import AlunoPrimeDetailsV2 from './components/AlunoPrimeV2/AlunoPrimeDetailsV2';
@@ -35,10 +39,12 @@ const App = () => {
           <Route path="/" element={<AlunoList />} />
           <Route path="/criar" element={<AlunoForm />} />
           <Route path="/editar/:id" element={<AlunoForm />} />
+          <Route path="/dadosAluno/:id" element={<AlunoDetails />} />
 
-          <Route path="/AlunoPrimeList" element={<AlunoPrimeList />} />
+          <Route path="/alunoPrimeList" element={<AlunoPrimeList />} />
           <Route path="/criaAlunoPrime" element={<AlunoPrimeForm />} />
           <Route path="/editarAlunoPrime/:id" element={<AlunoPrimeForm />} />
+          <Route path="/dadosAlunoPrime/:id" element={<AlunoPrimeDetails />} />
 
           <Route path="/alunoPrimeListV2" element={<AlunoPrimeListV2 />} />
           <Route path="/criaAlunoPrimeV2" element={<AlunoPrimeFormV2 />} />

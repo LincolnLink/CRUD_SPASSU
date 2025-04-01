@@ -59,7 +59,7 @@ const AlunoPrimeForm = () => {
         await createAluno(alunoData);
       }
       setLoading(false);
-      navigate('/AlunoPrimeList');
+      navigate('/alunoPrimeList');
     } catch (err) {
       setLoading(false);      
       setError(err.message || "Erro ao salvar os dados do aluno. Tente novamente.");
@@ -67,7 +67,7 @@ const AlunoPrimeForm = () => {
   };
 
   const handleGoBack = () => {
-    navigate('/AlunoPrimeList'); // Redireciona para a lista de alunos
+    navigate('/alunoPrimeList'); // Redireciona para a lista de alunos
   };
 
   return (

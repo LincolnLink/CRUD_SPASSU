@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
-import { getAlunoById, createAluno, updateAluno } from '../../services/alunoService';
+import { 
+  getAlunoComFotoById, 
+  //createAluno, 
+  createAlunoComFoto, 
+  //updateAluno,
+  updateAlunoComFoto
+} from '../../services/alunoService';
+import UploadFoto from '../UploadFotoPrimeV2/UploadFotoPrimeV2'
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
@@ -13,22 +20,27 @@ import 'primeicons/primeicons.css';
 import '../../styles/AlunoPrime.css';
 
 const AlunoPrimeFormV2 = () => {
+  const [idAluno, setIdAluno] = useState('');
   const [nome, setNome] = useState('');
   const [idade, setIdade] = useState('');
-  const [error, setError] = useState('');
-  //const [foto, setFoto] = useState(null);
+  const [error, setError] = useState('');  
   const [loading, setLoading] = useState(false);
-  const { id } = useParams(); // Pega o ID da URL (para edição)
+  const [fotoUpdate, setFotoUpdate] = useState(null);
+  const [fotoUrl, setFotoUrl] = useState(null);
+  const [removeFoto, setRemoveFoto] = useState(false);
+  const { id } = useParams();
   const navigate = useNavigate();
   
   useEffect(() => {
     if (id) {
       const fetchAluno = async () => {
         try {
-          const aluno = await getAlunoById(id);
+          const aluno = await getAlunoComFotoById(id);
           if(aluno !== null){
+            setIdAluno(aluno.id);
             setNome(aluno.nome);
-            setIdade(aluno.idade);            
+            setIdade(aluno.idade);
+            setFotoUrl(aluno.fotoUrl);                        
           }         
         } catch (err) {
           setError('Erro ao carregar os dados do aluno.');
@@ -49,16 +61,35 @@ const AlunoPrimeFormV2 = () => {
 
     setLoading(true);
     setError("");
-    const alunoData = {
-      nome: nome.trim(),
-      idade: idade ? Number(idade) : 0,
-      //foto 
-    };
+
+    const alunoData = new FormData();    
+    alunoData.append("nome", nome.trim());
+    alunoData.append("idade", idade ? Number(idade) : 0);
+    alunoData.append("fotoUpload", fotoUpdate);
+    alunoData.append("removeFoto", removeFoto);
+
+    // if (fotoUpdate) {
+      
+    // } else if (id && fotoUrl) {
+      
+    // }
+
     try {
-      if (id) {       
-        await updateAluno(id, { id, ...alunoData });
-      } else {        
-        await createAluno(alunoData);
+      if (id) {
+        alunoData.append("id", idAluno);
+        await updateAlunoComFoto(id, alunoData);
+        // if (fotoUpdate) {
+        //   await updateAlunoComFoto(alunoData);
+        // }else{
+        //   await updateAluno(id, alunoData);
+        // }
+      } else {
+        await createAlunoComFoto(alunoData);
+        // if (fotoUpdate) {
+        //   await createAlunoComFoto(alunoData);
+        // }else{
+        //   await createAluno(alunoData);
+        // }        
       }
       setLoading(false);
       navigate('/alunoPrimeListV2');
@@ -106,6 +137,15 @@ const AlunoPrimeFormV2 = () => {
             </div>
           </div>
 
+          <div className="p-field p-mb-3">
+            <label>Foto do Aluno:</label>
+            <UploadFoto 
+              onFileSelected={setFotoUpdate}
+              existingImage={fotoUrl}
+              onRemovePhoto={setRemoveFoto}
+            />
+          </div>
+
           <div className="p-field p-mb-3" >
             <Button
               type="submit"
@@ -124,7 +164,6 @@ const AlunoPrimeFormV2 = () => {
               style={{ float: 'right' }}
             />
           </div>
-
         </form>
         <br />
         <div >

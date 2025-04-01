@@ -63,6 +63,10 @@ const AlunoPrimeList = () => {
   const actionBodyTemplate = (rowData) => {
     return (
       <div className="action-buttons">
+        {/* Botão de Visualizar */}
+                <Link to={`/dadosAlunoPrime/${rowData.id}`}>
+                  <Button icon="pi pi-eye" className="p-button-rounded p-button-secondary p-mr-2" />
+                </Link>
         {/* Botão de Editar */}
         <Link to={`/editarAlunoPrime/${rowData.id}`}>
           <Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-mr-2" />

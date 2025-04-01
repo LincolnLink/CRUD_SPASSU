@@ -64,12 +64,19 @@ const AlunoList = () => {
                 <td>{aluno.nome}</td>
                 <td>{aluno.idade} anos</td>
                 <td className="right-align">
+                <Link
+                    to={`/dadosAluno/${aluno.id}`}
+                    className="waves-effect waves-light btn-small blue darken-2"
+                  >
+                  <i className="material-icons left">visibility</i>Vizualizar
+                  </Link>
                   <Link
                     to={`/editar/${aluno.id}`}
                     className="waves-effect waves-light btn-small blue darken-2"
+                    style={{ marginLeft: '10px' }}
                   >
                   <i className="material-icons left">edit</i>Editar
-                  </Link>
+                  </Link>                  
                   <button
                     onClick={() => handleDelete(aluno.id)}
                     className="waves-effect waves-light btn-small red darken-2"

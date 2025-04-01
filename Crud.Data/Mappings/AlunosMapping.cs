@@ -19,6 +19,10 @@ namespace Crud.Data.Mappings
             builder.Property(p => p.Idade)
                 .IsRequired()
                 .HasColumnType("int");
+
+            builder.Property(p => p.FotoUrl)
+               .HasColumnType("varchar(100)")
+               .IsRequired(false);
         }
     }
 }

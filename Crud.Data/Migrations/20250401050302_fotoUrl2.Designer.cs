@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Crud.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20250327212055_primeiraMigracao")]
-    partial class primeiraMigracao
+    [Migration("20250401050302_fotoUrl2")]
+    partial class fotoUrl2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,6 +30,9 @@ namespace Crud.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FotoUrl")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("Idade")
                         .HasColumnType("int");

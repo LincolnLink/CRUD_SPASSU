@@ -43,6 +43,8 @@ namespace Crud.Api
 
             var app = builder.Build();
 
+            app.UseStaticFiles();
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -53,6 +55,8 @@ namespace Crud.Api
             app.UseCors("AllowAll");
 
             app.UseHttpsRedirection();
+
+            app.UseRouting();
 
             app.UseAuthorization();
             
