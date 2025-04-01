@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
-import { getAlunoById, createAluno, updateAluno } from '../services/alunoService';
+import { getAlunoById, createAluno, updateAluno } from '../../services/alunoService';
 
 const AlunoForm = () => {
   const [nome, setNome] = useState('');

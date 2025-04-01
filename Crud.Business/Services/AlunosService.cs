@@ -1,6 +1,7 @@
 ﻿using Crud.Business.Validations;
 using Crud.Domain.Interfaces;
 using Crud.Domain.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Crud.Business.Services
 {
@@ -28,7 +29,7 @@ namespace Crud.Business.Services
             if (!ExecutarValidacao(new AlunosValidation(), alunos)) return;
 
             await _alunosRepository.Atualizar(alunos);
-        }              
+        }
 
         public async Task Remover(Guid id)
         {

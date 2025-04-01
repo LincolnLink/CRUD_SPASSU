@@ -73,7 +73,7 @@ namespace Crud.Api.Controllers
         public async Task<ActionResult<AlunosViewModel>> Adicionar(AlunosViewModel alunosViewModel)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
-                        
+
             await _alunosService.Adicionar(_mapper.Map<Alunos>(alunosViewModel));
 
             return CustomResponse(alunosViewModel);

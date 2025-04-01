@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace Crud.Domain.ViewModels
 {
@@ -13,6 +14,8 @@ namespace Crud.Domain.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [Range(1, 150, ErrorMessage = "O campo {0} deve estar entre {1} e {2}")]
         public int Idade { get; set; }
+
+        //public IFormFile? Foto { get; set; }
     }
 }
 

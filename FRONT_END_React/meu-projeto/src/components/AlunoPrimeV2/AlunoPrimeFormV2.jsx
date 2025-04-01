@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
-import { getAlunoById, createAluno, updateAluno } from '../services/alunoService';
+import { getAlunoById, createAluno, updateAluno } from '../../services/alunoService';
 
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
@@ -10,12 +10,13 @@ import { Message } from 'primereact/message';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primeicons/primeicons.css';
-import '../styles/AlunoPrimeList.css';
+import '../../styles/AlunoPrime.css';
 
-const AlunoPrimeForm = () => {
+const AlunoPrimeFormV2 = () => {
   const [nome, setNome] = useState('');
   const [idade, setIdade] = useState('');
   const [error, setError] = useState('');
+  //const [foto, setFoto] = useState(null);
   const [loading, setLoading] = useState(false);
   const { id } = useParams(); // Pega o ID da URL (para edição)
   const navigate = useNavigate();
@@ -50,7 +51,8 @@ const AlunoPrimeForm = () => {
     setError("");
     const alunoData = {
       nome: nome.trim(),
-      idade: idade ? Number(idade) : 0
+      idade: idade ? Number(idade) : 0,
+      //foto 
     };
     try {
       if (id) {       
@@ -59,7 +61,7 @@ const AlunoPrimeForm = () => {
         await createAluno(alunoData);
       }
       setLoading(false);
-      navigate('/AlunoPrimeList');
+      navigate('/alunoPrimeListV2');
     } catch (err) {
       setLoading(false);      
       setError(err.message || "Erro ao salvar os dados do aluno. Tente novamente.");
@@ -67,7 +69,7 @@ const AlunoPrimeForm = () => {
   };
 
   const handleGoBack = () => {
-    navigate('/AlunoPrimeList'); // Redireciona para a lista de alunos
+    navigate('/alunoPrimeListV2'); // Redireciona para a lista de alunos
   };
 
   return (
@@ -122,15 +124,16 @@ const AlunoPrimeForm = () => {
               style={{ float: 'right' }}
             />
           </div>
+
         </form>
         <br />
-        <div className="mt3">
-          {error && <Message severity="error" text={error} />}
+        <div >
+          {error && <Message className="mt3" severity="error" text={error} />}
         </div>
-        
+
       </Card>
     </div>
   );
 };
 
-export default AlunoPrimeForm;
+export default AlunoPrimeFormV2;

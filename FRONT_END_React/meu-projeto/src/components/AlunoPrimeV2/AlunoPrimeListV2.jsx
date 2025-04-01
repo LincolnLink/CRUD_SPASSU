@@ -7,14 +7,14 @@ import { Card } from 'primereact/card';
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 
-import { getAlunosPaginado, deleteAluno } from '../services/alunoService';
+import { getAlunosPaginado, deleteAluno } from '../../services/alunoService';
 
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primeicons/primeicons.css';
-import '../styles/AlunoPrimeList.css';
+import '../../styles/AlunoPrime.css';
 
-const AlunoPrimeList = () => {
+const AlunoPrimeListV2 = () => {
   const [alunos, setAlunos] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -63,8 +63,14 @@ const AlunoPrimeList = () => {
   const actionBodyTemplate = (rowData) => {
     return (
       <div className="action-buttons">
+        
+        {/* Botão de Visualizar */}
+        <Link to={`/dadosAlunoPrimeV2/${rowData.id}`}>
+          <Button icon="pi pi-eye" className="p-button-rounded p-button-secondary p-mr-2" />
+        </Link>
+
         {/* Botão de Editar */}
-        <Link to={`/editarAlunoPrime/${rowData.id}`}>
+        <Link to={`/editarAlunoPrimeV2/${rowData.id}`}>
           <Button icon="pi pi-pencil" className="p-button-rounded p-button-info p-mr-2" />
         </Link>
 
@@ -73,7 +79,7 @@ const AlunoPrimeList = () => {
           icon="pi pi-trash"
           className="p-button-rounded p-button-danger"
           onClick={() => handleDelete(rowData.id)}
-        />
+        /> 
       </div>
     );
   };
@@ -87,7 +93,7 @@ const AlunoPrimeList = () => {
         {/* Título e botão dentro de um container flex */}
         <div className="card-header">
           <h3>Lista de Alunos</h3>
-          <Link to="/criaAlunoPrime">
+          <Link to="/criaAlunoPrimeV2">
             <Button label="Criar Novo" icon="pi pi-plus" className="p-button-success p-button-rounded" />
           </Link>
         </div>
@@ -117,7 +123,7 @@ const AlunoPrimeList = () => {
             className="custom-table-prime"
             responsiveLayout="scroll"
             rowHover
-          >
+          >            
             <Column field="nome" header="Nome" />
             <Column field="idade" header="Idade" />
 
@@ -133,8 +139,8 @@ const AlunoPrimeList = () => {
       </Card>
 
     </div>
-        
+
   );
 };
 
-export default AlunoPrimeList;
+export default AlunoPrimeListV2;
