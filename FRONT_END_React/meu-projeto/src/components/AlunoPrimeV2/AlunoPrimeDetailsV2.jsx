@@ -11,17 +11,27 @@ import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primeicons/primeicons.css';
 import '../../styles/AlunoPrime.css';
 
+const API_URL = "https://localhost:7047";
+
 const AlunoPrimeDetailsV2 = () => {
   const [aluno, setAluno] = useState(null);
   const [error, setError] = useState('');
   const { id } = useParams();
   const navigate = useNavigate();
+  const [preview, setPreview] = useState(null);
 
   useEffect(() => {
     const fetchAluno = async () => {
       try {
         const data = await getAlunoComFotoById(id);
         setAluno(data);
+
+        if (data.fotoUrl) {
+          const isAbsoluteUrl = data.fotoUrl.startsWith("http");
+          setPreview(isAbsoluteUrl ? data.fotoUrl : `${API_URL}/pasta-fotos/${data.fotoUrl}`);
+        } else {
+          setPreview(null);
+        }
       } catch (err) {
         console.log("erro: ", err);
         setError('Erro ao carregar os dados do aluno. ');
@@ -41,22 +51,39 @@ const AlunoPrimeDetailsV2 = () => {
           <h3>Dados do Aluno</h3>
         </div>
 
-        {error && <Message severity="error" text={error} />}
-
-        {aluno && (
-          <div className="aluno-details">
-            <p><strong>Nome:</strong> {aluno.nome}</p>
-            <p><strong>Idade:</strong> {aluno.idade}</p>
+        <div className='grid'>
+          <div className='col-12 md:col-6 lg:col-6'>
+            {aluno && (
+              <div className="aluno-details">
+                <p><strong>Nome:</strong> {aluno.nome}</p>
+                <p><strong>Idade:</strong> {aluno.idade}</p>
+              </div>
+            )}
           </div>
-        )}
+          <div className='col-12 md:col-6 lg:col-6'>
 
-        <div className="button-container mt3">
-          <Button
-            label="Voltar"
-            icon="pi pi-arrow-left"
-            className="p-button-rounded"
-            onClick={handleGoBack}
-          />
+          {preview && (
+            <>
+              <img src={preview} 
+              alt="Preview"  
+              width="50%" 
+              height="300px"
+              />          
+            </>
+          )}
+
+          </div>          
+          <div className='col-12'>
+            <div className="button-container mt3">
+              <Button
+                  label="Voltar"
+                  icon="pi pi-arrow-left"
+                  className="p-button-rounded"
+                  onClick={handleGoBack}
+                />
+            </div>          
+            {error && <Message severity="error" text={error} />}
+          </div>
         </div>
       </Card>
     </div>

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate  } from 'react-router-dom';
 import { 
-  getAlunoComFotoById, 
-  //createAluno, 
-  createAlunoComFoto, 
-  //updateAluno,
+  getAlunoComFotoById,
+  createAlunoComFoto,
   updateAlunoComFoto
 } from '../../services/alunoService';
 import UploadFoto from '../UploadFotoPrimeV2/UploadFotoPrimeV2'
@@ -68,28 +66,12 @@ const AlunoPrimeFormV2 = () => {
     alunoData.append("fotoUpload", fotoUpdate);
     alunoData.append("removeFoto", removeFoto);
 
-    // if (fotoUpdate) {
-      
-    // } else if (id && fotoUrl) {
-      
-    // }
-
     try {
       if (id) {
         alunoData.append("id", idAluno);
-        await updateAlunoComFoto(id, alunoData);
-        // if (fotoUpdate) {
-        //   await updateAlunoComFoto(alunoData);
-        // }else{
-        //   await updateAluno(id, alunoData);
-        // }
+        await updateAlunoComFoto(id, alunoData);        
       } else {
-        await createAlunoComFoto(alunoData);
-        // if (fotoUpdate) {
-        //   await createAlunoComFoto(alunoData);
-        // }else{
-        //   await createAluno(alunoData);
-        // }        
+        await createAlunoComFoto(alunoData);               
       }
       setLoading(false);
       navigate('/alunoPrimeListV2');
@@ -100,7 +82,7 @@ const AlunoPrimeFormV2 = () => {
   };
 
   const handleGoBack = () => {
-    navigate('/alunoPrimeListV2'); // Redireciona para a lista de alunos
+    navigate('/alunoPrimeListV2');
   };
 
   return (
@@ -110,21 +92,17 @@ const AlunoPrimeFormV2 = () => {
           <h3>{id ? 'Editar Aluno' : 'Cadastrar Aluno'}</h3>
         </div>
 
-        <form onSubmit={handleSubmit}> 
-
-          <div className="p-d-flex p-flex-wrap p-mb-3 form-prime">
-            <div className="p-field p-col-12 p-md-6 p-mr-2 input-prime">
+        <form onSubmit={handleSubmit}>
+          <div className="grid">
+            <div className="col-12 md:col-6 lg:col-6">
               <label htmlFor="nome">Nome:</label>
               <InputText
-                id="nome"
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                //required
-                className="p-inputtext-sm"
+                  id="nome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  //required
+                  className="p-inputtext-sm"
               />
-            </div>
-
-            <div className="p-field p-col-12 p-md-6 input-prime">
               <label htmlFor="idade">Idade:</label>
               <InputText
                 id="idade"
@@ -135,41 +113,40 @@ const AlunoPrimeFormV2 = () => {
                 className="p-inputtext-sm"
               />
             </div>
+            <div className="col-12 md:col-6 lg:col-6">
+              <label>Foto do Aluno:</label>
+              <UploadFoto 
+                onFileSelected={setFotoUpdate}
+                existingImage={fotoUrl}
+                onRemovePhoto={setRemoveFoto}
+              />
+            </div>
           </div>
-
-          <div className="p-field p-mb-3">
-            <label>Foto do Aluno:</label>
-            <UploadFoto 
-              onFileSelected={setFotoUpdate}
-              existingImage={fotoUrl}
-              onRemovePhoto={setRemoveFoto}
-            />
+          <div className='grid'>                    
+            <div className="col-6 md:col-6 lg:col-6">
+              <Button
+                type="button"
+                label="Voltar"
+                icon="pi pi-arrow-left"
+                className="p-button p-component p-button-rounded float-left"
+                onClick={handleGoBack}
+              />
+            </div>            
+            <div className='col-6 md:col-6 lg:col-6 text-right'>              
+              <Button
+                  type="submit"
+                  label={loading ? 'Salvando...' : id ? 'Atualizar' : 'Criar'}
+                  icon="pi pi-save"
+                  className="p-button-success p-button-rounded float-right"                  
+                  loading={loading}                  
+              />
+            </div>
+            <div className='col-12 md:col-12 lg:col-12 '>
+              {error && <Message severity="error" text={error} />}
+            </div>   
           </div>
-
-          <div className="p-field p-mb-3" >
-            <Button
-              type="submit"
-              label={loading ? 'Salvando...' : id ? 'Atualizar' : 'Criar'}
-              icon="pi pi-save"
-              className="p-button-success p-button-rounded"
-              loading={loading}
-              style={{ float: 'right' }}
-            />
-            <Button
-              type="button"
-              label="Voltar"
-              icon="pi pi-arrow-left"
-              className="p-button p-component p-button-rounded"
-              onClick={handleGoBack}
-              style={{ float: 'right' }}
-            />
-          </div>
-        </form>
-        <br />
-        <div >
-          {error && <Message className="mt3" severity="error" text={error} />}
-        </div>
-
+        </form>        
+        
       </Card>
     </div>
   );

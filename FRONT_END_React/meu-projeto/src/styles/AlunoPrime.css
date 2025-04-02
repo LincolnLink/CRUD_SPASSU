@@ -1,3 +1,6 @@
+@import 'primeflex/primeflex.css';
+
+
 /* Estiliza o container principal para centralizar */
 .container-prime {
     display: flex;
@@ -103,4 +106,16 @@
 
 .mt3{
   margin-top: 3em;
+}
+
+.center-prime{
+  text-align: center;
+}
+
+.fr{
+  float: right;
+}
+
+.tr{
+  text-align: right;
 }

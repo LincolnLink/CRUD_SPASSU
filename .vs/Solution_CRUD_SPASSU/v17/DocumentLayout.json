@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "P:\\Projetos e Estudos\\CRUD_SPASSU\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|p:\\projetos e estudos\\crud_spassu\\crud.api\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EA0DEEB1-1B3E-4E22-999F-432D2C54731D}|Crud.Api\\Crud.Api.csproj|solutionrelative:crud.api\\controllers\\alunoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,24 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AlunosController.cs",
-              "DocumentMoniker": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Controllers\\AlunosController.cs",
-              "RelativeDocumentMoniker": "Crud.Api\\Controllers\\AlunosController.cs",
-              "ToolTip": "P:\\Projetos e Estudos\\CRUD_SPASSU\\Crud.Api\\Controllers\\AlunosController.cs",
-              "RelativeToolTip": "Crud.Api\\Controllers\\AlunosController.cs",
-              "ViewState": "AgIAAOkAAAAAAAAAAAAUwAMBAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T18:33:15.303Z",
-              "EditorCaption": ""
             }
           ]
         }

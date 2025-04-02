@@ -21,6 +21,7 @@ const AlunoPrimeListV2 = () => {
   const [totalRecords, setTotalRecords] = useState(0);
   const [loading, setLoading] = useState(false);
   const [lazyParams, setLazyParams] = useState({ first: 0, rows: 10 });
+  const [total, setTotal] = useState(0);
 
   // Opções do Dropdown para número de linhas por página
   const rowOptions = [
@@ -39,7 +40,10 @@ const AlunoPrimeListV2 = () => {
   const loadAlunos = async (page, size) => {
     setLoading(true);
     const data = await getAlunosPaginado(page, size);
-    console.log("Dados carregados:", data);
+    if(data.totalRecords > 0){
+      setTotal(data.totalRecords);
+    }
+    console.log(data)
     setAlunos(data.items);
     setTotalRecords(data.totalRecords);
     setLoading(false);
@@ -86,26 +90,6 @@ const AlunoPrimeListV2 = () => {
     );
   };
 
-  // Template para a foto do aluno
-  // const fotoBodyTemplate = (rowData) => {
-  //   const imageUrl = rowData.fotoUrl 
-  //     ? `${API_URL_FOTO}/${rowData.fotoUrl}?${new Date().getTime()}`  // Adiciona um parâmetro único
-  //     : PLACEHOLDER;
-
-  //   return (
-  //     <img 
-  //       src={imageUrl} 
-  //       alt="Foto do aluno" 
-  //       style={{ width: 50, height: 50, borderRadius: "50%" }}
-  //       onError={(e) => {
-  //         e.target.onerror = null; 
-  //         e.target.src = PLACEHOLDER;
-  //       }} 
-  //     />
-  //   );
-  // };
-
-
   return (
 
     <div className="container-prime">
@@ -130,6 +114,9 @@ const AlunoPrimeListV2 = () => {
             placeholder="Selecione as linhas"
             className="p-dropdown"
           />
+        </div>
+        <div>
+          <p>Total: {total}</p> 
         </div>
         
         <div className="table-container-prime">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FileUpload } from "primereact/fileupload";
 import { Image } from "primereact/image";
 import { Button } from "primereact/button";
+import '../../styles/AlunoPrime.css';
 
 const API_URL = "https://localhost:7047";
 const MAX_FILE_SIZE = 1 * 1024 * 1024; // 1MB
@@ -60,31 +61,48 @@ const UploadFoto = ({ onFileSelected, existingImage, onRemovePhoto }) => {
 
   return (
     <div className="upload-container">
-      <FileUpload
-        name="fotoUpdate"
-        mode="basic"
-        accept="image/jpeg, image/jpg"        
-        customUpload
-        auto
-        chooseLabel="Escolher Foto"
-        onSelect={handleUpload}
-      />
-
-      {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
-
-      {preview ? (
-        <>
-          <Image src={preview} alt="Preview" width="150" className="mt-2" />
-          <Button
-            label="Remover"
-            icon="pi pi-trash"
-            className="p-button-danger p-button-sm mt-2"
-            onClick={handleRemovePhoto}
-          />
-        </>
-      ) : (
-        <p style={{ fontSize: "12px", marginTop: "10px" }}>Nenhuma imagem selecionada.</p>
-      )}
+      <div className="grid">
+        <div className="col-6 md:col-6 lg:col-6">
+            <FileUpload
+              name="fotoUpdate"
+              mode="basic"
+              accept="image/jpeg, image/jpg"        
+              customUpload
+              auto
+              chooseLabel="Escolher Foto"
+              onSelect={handleUpload}
+            />
+          </div>
+          <div className="col-6 md:col-6 lg:col-6">
+            {preview ?
+              (
+              <Button
+                    label="Remover"
+                    icon="pi pi-trash"
+                    className="p-button-danger p-button-lg"
+                    onClick={handleRemovePhoto}
+                  />
+              ) : (<div></div>)
+            }
+        </div>
+        <div className="col-12 md:col-12 lg:col-12"
+        style={{ height: '300px'}}>
+          {preview ? (
+            <>
+              <Image src={preview} 
+              alt="Preview"  
+              width="50%" 
+              height="300px"
+              />          
+            </>
+          ) : (
+            <p style={{ fontSize: "12px", marginTop: "10px" }}>Nenhuma imagem selecionada.</p>
+          )}
+        </div>
+        <div className="col-12 md:col-12 lg:col-12">
+          {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+        </div>
+      </div>
     </div>
   );
 };
