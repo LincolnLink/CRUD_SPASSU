@@ -119,3 +119,26 @@
 .tr{
   text-align: right;
 }
+
+.img-prime img {
+  width: 200px;
+  border: solid 3px #bed8d678;
+}
+
+@media (min-width: 768px) {
+  .img-prime img {
+    width: 50%;    
+  }
+}
+
+
+.img-prime {
+  width: 200px;
+  border: solid 3px #bed8d678;
+}
+
+@media (min-width: 768px) {
+  .img-prime {
+    width: 50%;    
+  }
+}

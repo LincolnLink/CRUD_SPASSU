@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getAlunoComFotoById } from '../../services/alunoService';
-
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primeicons/primeicons.css';
 import '../../styles/AlunoPrime.css';
 
-const API_URL = "https://localhost:7047";
+import { API_URL } from '../../services/config'
 
 const AlunoPrimeDetailsV2 = () => {
   const [aluno, setAluno] = useState(null);
@@ -65,9 +63,9 @@ const AlunoPrimeDetailsV2 = () => {
           {preview && (
             <>
               <img src={preview} 
-              alt="Preview"  
-              width="50%" 
+              alt="Preview"
               height="300px"
+              className="img-prime"
               />          
             </>
           )}

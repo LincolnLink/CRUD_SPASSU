@@ -12,7 +12,6 @@ const UploadFoto = ({ onFileSelected, existingImage, onRemovePhoto }) => {
   const [preview, setPreview] = useState(existingImage || null);
   const [error, setError] = useState("");
 
-
   useEffect(() => {
     if (existingImage) {
       const isAbsoluteUrl = existingImage.startsWith("http");
@@ -90,9 +89,9 @@ const UploadFoto = ({ onFileSelected, existingImage, onRemovePhoto }) => {
           {preview ? (
             <>
               <Image src={preview} 
-              alt="Preview"  
-              width="50%" 
-              height="300px"
+              alt="Preview"              
+              height="300px"              
+              className="img-prime"
               />          
             </>
           ) : (
